@@ -39,8 +39,18 @@ public class Recursion{
   *@param letters: the letters you should be using
   */
   public static void printNoDoubleLetterWords(int length,String word,char[]letters){
-    
+    if (length == 0){
+      System.out.println(word);
+    }else{
+      for (char c : letters){
+        if (c != word.charAt(word.length() - 1)){
+          printNoDoubleLetterWords(length - 1, word + c, letters);
+        }
+      }
+    }
   }
-
+  public static void main(String[] args) {
+    printAllWords(3);
+  }
 
 }
