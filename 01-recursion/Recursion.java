@@ -51,10 +51,35 @@ public class Recursion{
       }
     }
   }
+
+  public static String toWords(int i){
+    String[] small = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+    String[] tens = {"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    String[] bigs = {"hundred", "thousand", "million", "billion"};
+    if (i < 10){
+      return small[i];
+    }else if(i < 20){
+      return teens[i];
+    }else if(i < 100){
+      if (i%10 == 0){
+        return tens[i/10 - 2];
+      }
+      return tens[i/10 - 2]+"-"+toWords(i%10);
+    }else if(i < 1000){
+      return small[i/100] +" "+ bigs[0] +" "+ toWords(i%100);
+    }else if(i < 1000000){
+      return toWords(i/1000) +" "+bigs[1]+" "+toWords(i%1000);
+    }
+    return "";
+  }
   public static void main(String[] args) {
     //printAllWords(3);
     char[] letters = {'a', 'b', 'c'};
-    printNoDoubleLetterWords(4, letters);
+    //printNoDoubleLetterWords(4, letters);
+
+    System.out.println(toWords(0));
+    System.out.println(toWords(372));
   }
 
 }
