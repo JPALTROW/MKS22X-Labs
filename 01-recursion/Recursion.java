@@ -43,14 +43,18 @@ public class Recursion{
       System.out.println(word);
     }else{
       for (char c : letters){
-        if (c != word.charAt(word.length() - 1)){
+        if (word.length() == 0){
+          printNoDoubleLetterWords(length - 1, word + c, letters);
+        }else if (c != word.charAt(word.length() - 1)){
           printNoDoubleLetterWords(length - 1, word + c, letters);
         }
       }
     }
   }
   public static void main(String[] args) {
-    printAllWords(3);
+    //printAllWords(3);
+    char[] letters = {'a', 'b', 'c'};
+    printNoDoubleLetterWords(4, letters);
   }
 
 }
