@@ -83,6 +83,17 @@ public class Recursion{
     }
   }
 
+  public static double sqrt(double n){
+    return sqrt(n, 1);
+  }
+
+  public static double sqrt(double n, double guess){
+    if(Math.abs(guess*guess - n) < n*0.00001){
+      return guess;
+    }
+    return sqrt(n, (n/guess + guess)/2);
+  }
+
 
   public static void main(String[] args) {
     //printAllWords(3);
@@ -94,6 +105,10 @@ public class Recursion{
     System.out.println(toWords(1234));*/
     System.out.println(reverse("abcde"));
     System.out.println(reverse(""));
+    System.out.println(sqrt(10));
+    System.out.println(sqrt(100));
+    System.out.println(sqrt(1));
+    System.out.println(sqrt(-1));
   }
 
 }
