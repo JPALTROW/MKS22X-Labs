@@ -56,7 +56,7 @@ public class Recursion{
     String[] small = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     String[] tens = {"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-    String[] bigs = {"hundred", "thousand", "million", "billion"};
+    String[] bigs = {"hundred", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "hextillion", "septillion", "octillion", "nonillion", "decillion"};
     if (i < 10){
       return small[i];
     }else if(i < 20){
@@ -68,18 +68,32 @@ public class Recursion{
       return tens[i/10 - 2]+"-"+toWords(i%10);
     }else if(i < 1000){
       return small[i/100] +" "+ bigs[0] +" "+ toWords(i%100);
-    }else if(i < 1000000){
-      return toWords(i/1000) +" "+bigs[1]+" "+toWords(i%1000);
+    }else{
+      int places = (int)(Math.log10(i));
+      int first3 = i/(int)(Math.pow(10, places-places%3));
+      return toWords(first3) +" "+ bigs[places/3] +" "+toWords(i%(int)(Math.pow(10, places-places%3)));
     }
-    return "";
   }
+
+  public static String reverse(String s){
+    if (s.length() == 0){
+      return "";
+    }else{
+      return reverse(s.substring(1))+s.charAt(0);
+    }
+  }
+
+
   public static void main(String[] args) {
     //printAllWords(3);
     char[] letters = {'a', 'b', 'c'};
     //printNoDoubleLetterWords(4, letters);
-
+    /*
     System.out.println(toWords(0));
     System.out.println(toWords(372));
+    System.out.println(toWords(1234));*/
+    System.out.println(reverse("abcde"));
+    System.out.println(reverse(""));
   }
 
 }
