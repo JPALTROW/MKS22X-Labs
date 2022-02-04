@@ -94,6 +94,22 @@ public class Recursion{
     return sqrt(n, (n/guess + guess)/2);
   }
 
+  public static long countNoDoubleLetterWords(int length,String word){
+    long counter = 0;
+    if (length == 0){
+      return 1l;
+    }else{
+      for (char c = 'a'; c<= 'z'; c++){
+        if (word.length() == 0){
+          counter += countNoDoubleLetterWords(length - 1, word + c);
+        }else if (c != word.charAt(word.length() - 1)){
+          counter += countNoDoubleLetterWords(length - 1, word + c);
+        }
+      }
+      return counter;
+    }
+  }
+
 
   public static void main(String[] args) {
     //printAllWords(3);
@@ -102,13 +118,14 @@ public class Recursion{
     /*
     System.out.println(toWords(0));
     System.out.println(toWords(372));
-    System.out.println(toWords(1234));*/
+    System.out.println(toWords(1234));
     System.out.println(reverse("abcde"));
     System.out.println(reverse(""));
     System.out.println(sqrt(10));
     System.out.println(sqrt(100));
-    System.out.println(sqrt(1));
-    System.out.println(sqrt(-1));
+    System.out.println(sqrt(1));*/
+    System.out.println(countNoDoubleLetterWords(3, ""));
+    System.out.println(countNoDoubleLetterWords(5, ""));
   }
 
 }
