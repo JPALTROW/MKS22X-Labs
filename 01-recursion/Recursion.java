@@ -52,26 +52,26 @@ public class Recursion{
     }
   }
 
-  public static String toWords(int i){
+  public static String toWords(long i){
     String[] small = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     String[] tens = {"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
     String[] bigs = {"hundred", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "hextillion", "septillion", "octillion", "nonillion", "decillion"};
-    if (i < 10){
-      return small[i];
-    }else if(i < 20){
-      return teens[i];
-    }else if(i < 100){
-      if (i%10 == 0){
-        return tens[i/10 - 2];
+    if (i < 10l){
+      return small[(int)i];
+    }else if(i < 20l){
+      return teens[(int)i-10];
+    }else if(i < 100l){
+      if (((int)i)%10 == 0){
+        return tens[((int)i)/10 - 2];
       }
-      return tens[i/10 - 2]+"-"+toWords(i%10);
+      return tens[((int)i)/10 - 2]+"-"+toWords(((int)i)%10);
     }else if(i < 1000){
-      return small[i/100] +" "+ bigs[0] +" "+ toWords(i%100);
+      return small[((int)i)/100] +" "+ bigs[0] +" "+ toWords(((int)i)%100);
     }else{
-      int places = (int)(Math.log10(i));
-      int first3 = i/(int)(Math.pow(10, places-places%3));
-      return toWords(first3) +" "+ bigs[places/3] +" "+toWords(i%(int)(Math.pow(10, places-places%3)));
+      int places = (int)(Math.log10(i)+1);
+      long first3 = i/(long)(Math.pow(10, (places-1)-(places-1)%3));
+      return toWords(first3) +" "+ bigs[places/3] +" "+toWords(i%(long)(Math.pow(10, (places-1)-(places-1)%3)));
     }
   }
 
@@ -123,9 +123,14 @@ public class Recursion{
     System.out.println(reverse(""));
     System.out.println(sqrt(10));
     System.out.println(sqrt(100));
-    System.out.println(sqrt(1));*/
+    System.out.println(sqrt(1));
     System.out.println(countNoDoubleLetterWords(3, ""));
     System.out.println(countNoDoubleLetterWords(5, ""));
+    System.out.println(toWords(1l));
+    System.out.println(toWords(14l));
+    System.out.println(toWords(37l));
+    System.out.println(toWords(428l));*/
+    System.out.println(toWords(783235098732l));
   }
 
 }
