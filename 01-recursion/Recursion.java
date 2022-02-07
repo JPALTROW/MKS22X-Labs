@@ -75,6 +75,10 @@ public class Recursion{
     }
   }
 
+  public static String toWords(int i){
+    return(toWords((long)(i)));
+  }
+
   public static String reverse(String s){
     if (s.length() == 0){
       return "";
