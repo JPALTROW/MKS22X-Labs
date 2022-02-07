@@ -71,7 +71,8 @@ public class Recursion{
     }else{
       int places = (int)(Math.log10(i)+1);
       long first3 = i/(long)(Math.pow(10, (places-1)-(places-1)%3));
-      return toWords(first3) +" "+ bigs[places/3] +" "+toWords(i%(long)(Math.pow(10, (places-1)-(places-1)%3)));
+      System.out.println(places);
+      return toWords(first3) +" "+ bigs[(places-1)/3] +" "+toWords(i%(long)(Math.pow(10, (places-1)-(places-1)%3)));
     }
   }
 
@@ -92,6 +93,9 @@ public class Recursion{
   }
 
   public static double sqrt(double n, double guess){
+    if (n == 0.0){
+      return 0.0;
+    }
     if(Math.abs(guess*guess - n) < n*0.00001){
       return guess;
     }
@@ -115,7 +119,13 @@ public class Recursion{
   }
 
   public static int fibIter(int n, int f1, int f2){
-return 0;
+    if(n == 0){
+      return f1;
+    }else if(n == 1){
+      return f2;
+    }else{
+      return fibIter(n-1, f2, f2+f1);
+    }
   }
 
   public static boolean partialSum(int[] arr, int num){
@@ -131,6 +141,18 @@ return 0;
         smaller[i-1]=arr[i];
       }
       return partialSum(smaller, num) || partialSum(smaller, num-arr[0]);
+    }
+  }
+
+  public static boolean partialSum(int[] arr, int num, int start){
+    if (num == 0){
+      return true;
+    }else if(arr.length == 0){
+      return false;
+    }else if(num < 0){
+      return false;
+    }else{
+      return 
     }
   }
 
@@ -153,12 +175,21 @@ return 0;
     System.out.println(toWords(14l));
     System.out.println(toWords(37l));
     System.out.println(toWords(428l));
-    System.out.println(toWords(783235098732l));*/
+    System.out.println(toWords(783235098732l));
     int[] nums = {2, 4, 8, 16, 32};
     System.out.println(partialSum(nums, 1));
     System.out.println(partialSum(nums, 0));
     System.out.println(partialSum(nums, 23));
     System.out.println(partialSum(nums, 24));
+    System.out.println(sqrt(0));
+    System.out.println(toWords(1878454569076432l));*/
+    System.out.println(fibIter(0, 1, 0));
+    System.out.println(fibIter(1, 1, 0));
+    System.out.println(fibIter(2, 1, 0));
+    System.out.println(fibIter(3, 1, 0));
+    System.out.println(fibIter(4, 1, 0));
+
+
   }
 
 }
