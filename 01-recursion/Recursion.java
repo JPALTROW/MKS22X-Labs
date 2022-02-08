@@ -129,19 +129,7 @@ public class Recursion{
   }
 
   public static boolean partialSum(int[] arr, int num){
-    if (num == 0){
-      return true;
-    }else if(arr.length == 0){
-      return false;
-    }else if(num < 0){
-      return false;
-    }else{
-      int[] smaller = new int[arr.length - 1];
-      for (int i = 1; i < arr.length; i++){
-        smaller[i-1]=arr[i];
-      }
-      return partialSum(smaller, num) || partialSum(smaller, num-arr[0]);
-    }
+    return partialSum(arr, num, 0);
   }
 
   public static boolean partialSum(int[] arr, int num, int start){
@@ -151,14 +139,17 @@ public class Recursion{
       return false;
     }else if(num < 0){
       return false;
+    }else if(start >= arr.length){
+      return false;
     }else{
-      return 
+      return partialSum(arr, num, start+1) || partialSum(arr, num-arr[start], start+1);
     }
   }
 
   public static void main(String[] args) {
     //printAllWords(3);
     char[] letters = {'a', 'b', 'c'};
+    int[] nums = {2, 4, 8, 16, 32};
     //printNoDoubleLetterWords(4, letters);
     /*
     System.out.println(toWords(0));
@@ -176,18 +167,18 @@ public class Recursion{
     System.out.println(toWords(37l));
     System.out.println(toWords(428l));
     System.out.println(toWords(783235098732l));
-    int[] nums = {2, 4, 8, 16, 32};
+
     System.out.println(partialSum(nums, 1));
     System.out.println(partialSum(nums, 0));
     System.out.println(partialSum(nums, 23));
     System.out.println(partialSum(nums, 24));
     System.out.println(sqrt(0));
-    System.out.println(toWords(1878454569076432l));*/
+    System.out.println(toWords(1878454569076432l));
     System.out.println(fibIter(0, 1, 0));
     System.out.println(fibIter(1, 1, 0));
     System.out.println(fibIter(2, 1, 0));
     System.out.println(fibIter(3, 1, 0));
-    System.out.println(fibIter(4, 1, 0));
+    System.out.println(fibIter(4, 1, 0));*/
 
 
   }
