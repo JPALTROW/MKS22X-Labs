@@ -53,17 +53,35 @@ public class RecursionC{
     }
   }
 
+  public static boolean splitArrayDiff(int[]arr, int diff, int index){
+    if(arr.length == 0){
+      return (diff == 0);
+    }else if(index >= arr.length){
+      return (diff == 0);
+    }
+
+    else{
+      return splitArrayDiff(arr, diff+arr[index], index+1)||splitArrayDiff(arr, diff-arr[index], index+1);
+    }
+  }
+
 
   public static boolean splitArray(int[] arr){
-    int sum = summer(0, arr, 0);
+    /*int sum = summer(0, arr, 0);
     if (sum%2 == 1){
       return false;
     }
-    return partialSum(arr, sum/2);
+    return partialSum(arr, sum/2);*/
+    return splitArrayDiff(arr, 0, 0);
   }
 
   public static void main(String[] args) {
     System.out.println(splitArray(new int[]{2, 2}));
+    System.out.println(splitArray(new int[]{2, 3}));
+    System.out.println(splitArray(new int[]{2, 3, 5}));
+    System.out.println(splitArray(new int[]{}));
+    System.out.println(splitArray(new int[]{10, 2, 3, 1}));
+
   }
 
 
