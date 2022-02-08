@@ -92,11 +92,11 @@ public class Recursion{
 
   public static int fibIter(int n, int f1, int f2){
     if(n == 0){
-      return f1;
-    }else if(n == 1){
       return f2;
+    }else if(n == 1){
+      return f1;
     }else{
-      return fibIter(n-1, f2, f2+f1);
+      return fibIter(n-1, f2+f1, f1);
     }
   }
 
@@ -120,12 +120,12 @@ public class Recursion{
     System.out.println(countNoDoubleLetterWords(5, ""));
 
 
-    System.out.println(sqrt(0));
+    System.out.println(sqrt(0));*/
     System.out.println(fibIter(0, 1, 0));
     System.out.println(fibIter(1, 1, 0));
     System.out.println(fibIter(2, 1, 0));
     System.out.println(fibIter(3, 1, 0));
-    System.out.println(fibIter(4, 1, 0));*/
+    System.out.println(fibIter(4, 1, 0));
 
 
   }
