@@ -36,8 +36,6 @@ public class RecursionC{
       return true;
     }else if(arr.length == 0){
       return false;
-    }else if(num < 0){
-      return false;
     }else if(start >= arr.length){
       return false;
     }else{
