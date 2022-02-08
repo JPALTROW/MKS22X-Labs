@@ -45,20 +45,25 @@ public class RecursionC{
     }
   }
 
-  public static int sum(int[] arr){
-    int counter = 0;
-    for (int i : arr){
-      counter+=i;
+  public static int summer(int start, int[] arr, int counter){
+    if (start >= arr.length){
+      return 0;
+    }else{
+      return summer(start+1, arr, counter+arr[start]);
     }
-    return counter;
   }
 
 
-  public boolean splitArray(int[] arr){
-    if (sum(arr)%2 == 1){
+  public static boolean splitArray(int[] arr){
+    int sum = summer(0, arr, 0);
+    if (sum%2 == 1){
       return false;
     }
-    return partialSum(arr, sum(arr)/2);
+    return partialSum(arr, sum/2);
+  }
+
+  public static void main(String[] args) {
+    System.out.println(splitArray(new int[]{2, 2}));
   }
 
 
