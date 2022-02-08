@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class RecursionC{
   public static String toWords(long i){
     String[] small = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -42,4 +44,22 @@ public class RecursionC{
       return partialSum(arr, num, start+1) || partialSum(arr, num-arr[start], start+1);
     }
   }
+
+  public static int sum(int[] arr){
+    int counter = 0;
+    for (int i : arr){
+      counter+=i;
+    }
+    return counter;
+  }
+
+
+  public boolean splitArray(int[] arr){
+    if (sum(arr)%2 == 1){
+      return false;
+    }
+    return partialSum(arr, sum(arr)/2);
+  }
+
+
 }
