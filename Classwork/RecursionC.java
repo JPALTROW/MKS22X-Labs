@@ -93,15 +93,29 @@ public class RecursionC{
     }
   }
 
-  public static Boolean splitOdd10(int[] nums){
+  public static boolean splitOdd10(int[] nums){
     return splitOdd10(nums, 0, 0, 0);
   }
 
-  public static Boolean splitOdd10(int[] nums,int sum1,int sum2, int start){
+  public static boolean splitOdd10(int[] nums,int sum1,int sum2, int start){
     if(start >= nums.length){
       return (sum1%10 == 0 && sum2%2 ==1);
     }else{
       return splitOdd10(nums, sum1+nums[start], sum2, start+1)||splitOdd10(nums, sum1, sum2+nums[start], start+1);
+    }
+  }
+
+  public static boolean split53(int[] nums) {
+    return split53(nums, 0, 0, 0);
+  }
+
+  public static boolean split53(int[] nums, int sum1, int sum2, int start){
+    if (nums[start]%5 == 0){
+      return split53(nums, sum1+nums[start], sum2, start+1);
+    }else if (nums[start]%3 == 0){
+      return split53(nums, sum1, sum2+nums[start], start+1);
+    }else{
+      return split53(nums, sum1+nums[start], sum2, start+1)||split53(nums, sum1, sum2+nums[start], start+1);
     }
   }
 
