@@ -110,6 +110,10 @@ public class RecursionC{
   }
 
   public static boolean split53(int[] nums, int sum1, int sum2, int start){
+    if (start>=nums.length){
+      return sum1==sum2;
+    }
+
     if (nums[start]%5 == 0){
       return split53(nums, sum1+nums[start], sum2, start+1);
     }else if (nums[start]%3 == 0){
@@ -137,13 +141,18 @@ public class RecursionC{
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 7));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 0));
     System.out.println(groupNoAdj(0, new int[]{}, 0));
-    System.out.println(groupNoAdj(0, new int[]{}, 12));*/
+    System.out.println(groupNoAdj(0, new int[]{}, 12));
     System.out.println(splitOdd10(new int[]{5,5,5}));
     System.out.println(splitOdd10(new int[]{5,5,6}));
     System.out.println(splitOdd10(new int[]{5,5,6,1}));
     System.out.println(splitOdd10(new int[]{}));
     System.out.println(splitOdd10(new int[]{1}));
-    System.out.println(splitOdd10(new int[]{1,2}));
+    System.out.println(splitOdd10(new int[]{1,2}));*/
+    System.out.println(split53(new int[]{5,5,5}));
+    System.out.println(split53(new int[]{1,1}));
+    System.out.println(split53(new int[]{3,5,2}));
+    System.out.println(split53(new int[]{}));
+    System.out.println(split53(new int[]{3,3}));
 
 
 
