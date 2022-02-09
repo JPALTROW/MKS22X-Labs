@@ -94,6 +94,9 @@ public class RecursionC{
     System.out.println(groupSum6(0, new int[] {5,6,2}, 8));
     System.out.println(groupSum6(0, new int[] {5,6,2}, 9));
     System.out.println(groupSum6(0, new int[] {5,6,2}, 7));
+    System.out.println(groupSum6(0, new int[] {}, 8));
+    System.out.println(groupSum6(0, new int[] {6}, 0));
+    System.out.println(groupSum6(0, new int[] {}, 0));
 
   }
 
