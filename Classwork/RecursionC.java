@@ -116,14 +116,21 @@ public class RecursionC{
     System.out.println(groupSum6(0, new int[] {5,6,2}, 7));
     System.out.println(groupSum6(0, new int[] {}, 8));
     System.out.println(groupSum6(0, new int[] {6}, 0));
-    System.out.println(groupSum6(0, new int[] {}, 0));*/
+    System.out.println(groupSum6(0, new int[] {}, 0));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 12));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 14));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 10));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 7));
     System.out.println(groupNoAdj(0, new int[]{2, 5, 10, 4}, 0));
     System.out.println(groupNoAdj(0, new int[]{}, 0));
-    System.out.println(groupNoAdj(0, new int[]{}, 12));
+    System.out.println(groupNoAdj(0, new int[]{}, 12));*/
+    System.out.println(splitOdd10(new int[]{5,5,5}));
+    System.out.println(splitOdd10(new int[]{5,5,6}));
+    System.out.println(splitOdd10(new int[]{5,5,6,1}));
+    System.out.println(splitOdd10(new int[]{}));
+    System.out.println(splitOdd10(new int[]{1}));
+    System.out.println(splitOdd10(new int[]{1,2}));
+
 
 
   }
