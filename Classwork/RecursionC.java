@@ -75,12 +75,25 @@ public class RecursionC{
     return splitArrayDiff(arr, 0, 0);
   }
 
+  public static Boolean groupSum6(int start, int[] nums, int target){
+    if(start >= nums.length){
+      return (target == 0);
+    }else if(nums[start] == 6){
+      return groupSum6(start+1, nums, target-6);
+    }else{
+      return groupSum6(start+1, nums, target) || groupSum6(start+1, nums, target-nums[start]);
+    }
+  }
+
   public static void main(String[] args) {
-    System.out.println(splitArray(new int[]{2, 2}));
+    /*System.out.println(splitArray(new int[]{2, 2}));
     System.out.println(splitArray(new int[]{2, 3}));
     System.out.println(splitArray(new int[]{2, 3, 5}));
     System.out.println(splitArray(new int[]{}));
-    System.out.println(splitArray(new int[]{10, 2, 3, 1}));
+    System.out.println(splitArray(new int[]{10, 2, 3, 1}));*/
+    System.out.println(groupSum6(0, new int[] {5,6,2}, 8));
+    System.out.println(groupSum6(0, new int[] {5,6,2}, 9));
+    System.out.println(groupSum6(0, new int[] {5,6,2}, 7));
 
   }
 
