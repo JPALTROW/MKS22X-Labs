@@ -93,6 +93,18 @@ public class RecursionC{
     }
   }
 
+  public static Boolean splitOdd10(int[] nums){
+    return splitOdd10(nums, 0, 0, 0);
+  }
+
+  public static Boolean splitOdd10(int[] nums,int sum1,int sum2, int start){
+    if(start >= nums.length){
+      return (sum1%10 == 0 && sum2%2 ==1);
+    }else{
+      return splitOdd10(nums, sum1+nums[start], sum2, start+1)||splitOdd10(nums, sum1, sum2+nums[start], start+1);
+    }
+  }
+
   public static void main(String[] args) {
     /*System.out.println(splitArray(new int[]{2, 2}));
     System.out.println(splitArray(new int[]{2, 3}));
