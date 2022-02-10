@@ -123,6 +123,25 @@ public class RecursionC{
     }
   }
 
+  public static boolean groupSum5(int start, int[] nums, int target) {
+    if (start == nums.length){
+      return (target==0);
+    }
+    if (start == nums.length -1){
+      if (nums[start]==5){
+        return groupSum5(start+1, nums, target - 5);
+      }
+      return groupSum5(start+1, nums, target)||groupSum5(start+1, nums, target-nums[start]);
+    }
+    if (nums[start]==5){
+      if (nums[start+1] == 1){
+        return groupSum5(start+2, nums, target - 5);
+      }
+      return groupSum5(start+1, nums, target - 5);
+    }
+    return groupSum5(start+1, nums, target)||groupSum5(start+1, nums, target-nums[start]);
+  }
+
   public static void main(String[] args) {
     /*System.out.println(splitArray(new int[]{2, 2}));
     System.out.println(splitArray(new int[]{2, 3}));
