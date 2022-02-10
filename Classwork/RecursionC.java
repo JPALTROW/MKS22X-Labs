@@ -127,11 +127,8 @@ public class RecursionC{
     if (start == nums.length){
       return (target==0);
     }
-    if (start == nums.length -1){
-      if (nums[start]==5){
-        return groupSum5(start+1, nums, target - 5);
-      }
-      return groupSum5(start+1, nums, target)||groupSum5(start+1, nums, target-nums[start]);
+    if (start == nums.length -1 && nums[start]==5){
+      return groupSum5(start+1, nums, target - 5);
     }
     if (nums[start]==5){
       if (nums[start+1] == 1){
@@ -166,12 +163,21 @@ public class RecursionC{
     System.out.println(splitOdd10(new int[]{5,5,6,1}));
     System.out.println(splitOdd10(new int[]{}));
     System.out.println(splitOdd10(new int[]{1}));
-    System.out.println(splitOdd10(new int[]{1,2}));*/
+    System.out.println(splitOdd10(new int[]{1,2}));
     System.out.println(split53(new int[]{5,5,5}));
     System.out.println(split53(new int[]{1,1}));
     System.out.println(split53(new int[]{3,5,2}));
     System.out.println(split53(new int[]{}));
-    System.out.println(split53(new int[]{3,3}));
+    System.out.println(split53(new int[]{3,3}));*/
+    System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 19));
+    System.out.println(groupSum5(0, new int[]{2, 5, 1, 4}, 10));
+    System.out.println(groupSum5(0, new int[]{2, 5, 1, 4}, 0));
+    System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 17));
+    System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 12));
+    System.out.println(groupSum5(0, new int[]{}, 19));
+    System.out.println(groupSum5(0, new int[]{}, 0));
+
+
 
 
 
