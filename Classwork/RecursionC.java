@@ -162,7 +162,7 @@ public class RecursionC{
       System.out.println(sentence);
     }else{
       for (String word:lists[current]){
-        permute(lists, sentence+word, current+1);
+        permute(lists, sentence+" "+word, current+1);
       }
     }
   }
@@ -210,6 +210,12 @@ public class RecursionC{
     System.out.println(groupSumClump(0, new int[]{2,4,4,8}, 10));
     System.out.println(groupSumClump(0, new int[]{}, 0));
     System.out.println(groupSumClump(0, new int[]{}, 1));*/
+    String[][] wordLists = {
+              {"The dog", "The pro skater"},
+              {"plays" , "empathises with" },
+              {"chess", "ball", "the voiceless masses"}
+            };
+    permute(wordLists,"",0);
 
   }
 
