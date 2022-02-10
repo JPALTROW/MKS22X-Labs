@@ -139,6 +139,24 @@ public class RecursionC{
     return groupSum5(start+1, nums, target)||groupSum5(start+1, nums, target-nums[start]);
   }
 
+  public static boolean groupSumClump(int start, int[] nums, int target) {
+    if (start == nums.length){
+      return target == 0;
+    }
+    int clumpLen = 0;
+    int Index = start;
+    boolean clumped = true;
+    while(Index < nums.length && clumped){
+      if (nums[Index]==nums[start]){
+        clumpLen++;
+        Index++;
+      }else{
+        clumped = false;
+      }
+    }
+    return groupSumClump(start+clumpLen, nums, target)||groupSumClump(start+clumpLen, nums, target-clumpLen*nums[start]);
+  }
+
   public static void main(String[] args) {
     /*System.out.println(splitArray(new int[]{2, 2}));
     System.out.println(splitArray(new int[]{2, 3}));
