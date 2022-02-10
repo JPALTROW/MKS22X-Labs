@@ -186,18 +186,20 @@ public class RecursionC{
     System.out.println(split53(new int[]{1,1}));
     System.out.println(split53(new int[]{3,5,2}));
     System.out.println(split53(new int[]{}));
-    System.out.println(split53(new int[]{3,3}));*/
+    System.out.println(split53(new int[]{3,3}));
     System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 19));
     System.out.println(groupSum5(0, new int[]{2, 5, 1, 4}, 10));
     System.out.println(groupSum5(0, new int[]{2, 5, 1, 4}, 0));
     System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 17));
     System.out.println(groupSum5(0, new int[]{2, 5, 10, 4}, 12));
     System.out.println(groupSum5(0, new int[]{}, 19));
-    System.out.println(groupSum5(0, new int[]{}, 0));
-
-
-
-
+    System.out.println(groupSum5(0, new int[]{}, 0));*/
+    System.out.println(groupSumClump(0, new int[]{2,4,8}, 10));
+    System.out.println(groupSumClump(0, new int[]{1,2,4,8,1}, 14));
+    System.out.println(groupSumClump(0, new int[]{2,4,4,8}, 14));
+    System.out.println(groupSumClump(0, new int[]{2,4,4,8}, 10));
+    System.out.println(groupSumClump(0, new int[]{}, 0));
+    System.out.println(groupSumClump(0, new int[]{}, 1));
 
   }
 
