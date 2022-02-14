@@ -42,7 +42,29 @@ public class QueenBoard{
   * in which case the queen is added and all it's threatened positions are incremented
   */
   private boolean addQueen(int r, int c){
-return false;
+    int row = r;
+    int col = c;
+    if (board[r][c] > 0){
+      return false;
+    }
+    while(row<board.length){
+      row++;
+      board[row][col]++;
+    }
+    row = r;
+    while(row<board.length && col<board.length){
+      row++;
+      col++;
+      board[row][col]++;
+    }
+    row = r;
+    col = c;
+    while(row<board.length && col<board.length){
+      row++;
+      col--;
+      board[row][col]++;
+    }
+    return true;
   }
 
   /**Remove the queen that was added to r,c
