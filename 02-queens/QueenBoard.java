@@ -41,29 +41,37 @@ public class QueenBoard{
   *@postcondition the board is only changed when the function returns true
   * in which case the queen is added and all it's threatened positions are incremented
   */
-  private boolean addQueen(int r, int c){
+  public boolean addQueen(int r, int c){
     int row = r;
-    int col = c;
+    int col = c+1;
     if (board[r][c] > 0){
       return false;
     }
-    while(row<board.length){
-      row++;
-      board[row][col]++;
+    row++;
+    if(r < board.length - 1){
+      while(row<board.length){
+        board[row][c]++;
+        row++;
+      }
+      row = r+1;
+      if(c < board.length - 1){
+        while(row<board.length && col<board.length){
+          board[row][col]++;
+          row++;
+          col++;
+        }
+      }
+      row = r+1;
+      col = c-1;
+      if(c > 0){
+        while(row<board.length && col<board.length){
+          board[row][col]++;
+          row++;
+          col--;
+        }
+      }
     }
-    row = r;
-    while(row<board.length && col<board.length){
-      row++;
-      col++;
-      board[row][col]++;
-    }
-    row = r;
-    col = c;
-    while(row<board.length && col<board.length){
-      row++;
-      col--;
-      board[row][col]++;
-    }
+    board[r][c]=-1;
     return true;
   }
 
@@ -72,8 +80,34 @@ public class QueenBoard{
   *@postcondition the board is modified to remove that queen and all it's
   *threatened positions are decremented
   */
-  private void removeQueen(int r, int c){
-
+  public void removeQueen(int r, int c){
+    int row = r;
+    int col = c+1;
+    row++;
+    if(r < board.length - 1){
+      while(row<board.length){
+        board[row][c]--;
+        row++;
+      }
+      row = r+1;
+      if(c < board.length - 1){
+        while(row<board.length && col<board.length){
+          board[row][col]--;
+          row++;
+          col++;
+        }
+      }
+      row = r+1;
+      col = c-1;
+      if(c > 0){
+        while(row<board.length && col<board.length){
+          board[row][col]--;
+          row++;
+          col--;
+        }
+      }
+    }
+    board[r][c]=0;
   }
 
   /**Find the first solution configuration possible for this size board. Start by placing
@@ -86,7 +120,7 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
   */
   public boolean solve(){
-return false;
+    return false;
   }
 
   /**Find all possible solutions to this size board.
@@ -94,6 +128,6 @@ return false;
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
   */
   public int countSolutions(){
-return 0;
+    return 0;
   }
 }
