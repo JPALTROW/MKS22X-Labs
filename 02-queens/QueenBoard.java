@@ -138,7 +138,15 @@ public class QueenBoard{
     if(row==board.length){
       return true;
     }else{
-return false;
+      for (int col = 0; col<board.length; col++){
+        if(addQueen(row, col)){
+          if(solve(row+1)){
+            return true;
+          }
+          removeQueen(row, col);
+        }
+      }
+      return false;
     }
   }
 
