@@ -64,7 +64,7 @@ public class QueenBoard{
       row = r+1;
       col = c-1;
       if(c > 0){
-        while(row<board.length && col<board.length){
+        while(row<board.length && col>0){
           board[row][col]++;
           row++;
           col--;
@@ -100,7 +100,7 @@ public class QueenBoard{
       row = r+1;
       col = c-1;
       if(c > 0){
-        while(row<board.length && col<board.length){
+        while(row<board.length && col>0){
           board[row][col]--;
           row++;
           col--;
@@ -128,13 +128,13 @@ public class QueenBoard{
       }
     }
     if (solve(0)){
-      System.out.println(board);
+      System.out.println(toString());
       return true;
     }
     return false;
   }
 
-  public boolean solve(int row){
+  private boolean solve(int row){
     if(row==board.length){
       return true;
     }else{
