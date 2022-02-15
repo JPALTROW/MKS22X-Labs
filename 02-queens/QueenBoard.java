@@ -41,7 +41,7 @@ public class QueenBoard{
   *@postcondition the board is only changed when the function returns true
   * in which case the queen is added and all it's threatened positions are incremented
   */
-  public boolean addQueen(int r, int c){
+  private boolean addQueen(int r, int c){
     int row = r;
     int col = c+1;
     if (board[r][c] > 0){
@@ -80,7 +80,7 @@ public class QueenBoard{
   *@postcondition the board is modified to remove that queen and all it's
   *threatened positions are decremented
   */
-  public void removeQueen(int r, int c){
+  private void removeQueen(int r, int c){
     int row = r;
     int col = c+1;
     row++;
@@ -120,7 +120,26 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
   */
   public boolean solve(){
+    for(int[] i:board){
+      for(int j:i){
+        if (j != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
+    if (solve(0)){
+      System.out.println(board);
+      return true;
+    }
     return false;
+  }
+
+  public boolean solve(int row){
+    if(row==board.length){
+      return true;
+    }else{
+return false;
+    }
   }
 
   /**Find all possible solutions to this size board.
