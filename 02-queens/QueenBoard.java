@@ -155,6 +155,40 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
   */
   public int countSolutions(){
-    return 0;
+    for(int[] i:board){
+      for(int j:i){
+        if (j != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
+    int count = countSolutions(0);
+    for (int[] i :board){
+      for(int j:i){
+        j=0;
+      }
+    }
+    return count;
+  }
+
+  private int countSolutions(int row){
+    int counter = 0;
+    if (row == board.length){
+      return 1;
+    }else{
+      for (int col = 0; col<board.length; col++){
+        if(addQueen(row, col)){
+          System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(1500);//change the delay 1000 = 1 second
+          counter+=countSolutions(row+1);
+        }
+        removeQueen(row, col);
+        System.out.println(Text.go(1,1));
+        System.out.println(this);//can change this to your debug print as well
+        Text.wait(1500);//change the delay 1000 = 1 second
+      }
+    }
+    return counter;
   }
 }
