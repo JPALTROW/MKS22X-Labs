@@ -63,13 +63,11 @@ public class QueenBoard{
       }
       row = r+1;
       col = c-1;
-      if(c > 0){
-        while(row<board.length && col>0){
+        while(row<board.length && col>=0){
           board[row][col]++;
           row++;
           col--;
         }
-      }
     }
     board[r][c]=-1;
     return true;
@@ -99,13 +97,12 @@ public class QueenBoard{
       }
       row = r+1;
       col = c-1;
-      if(c > 0){
-        while(row<board.length && col>0){
+        while(row<board.length && col>=0){
           board[row][col]--;
           row++;
           col--;
         }
-      }
+
     }
     board[r][c]=0;
   }
@@ -180,13 +177,10 @@ public class QueenBoard{
         if(addQueen(row, col)){
           System.out.println(Text.go(1,1));
           System.out.println(this);//can change this to your debug print as well
-          Text.wait(1500);//change the delay 1000 = 1 second
+          Text.wait(50);//change the delay 1000 = 1 second
           counter+=countSolutions(row+1);
+          removeQueen(row, col);
         }
-        removeQueen(row, col);
-        System.out.println(Text.go(1,1));
-        System.out.println(this);//can change this to your debug print as well
-        Text.wait(1500);//change the delay 1000 = 1 second
       }
     }
     return counter;
