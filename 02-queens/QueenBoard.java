@@ -1,8 +1,23 @@
 public class QueenBoard{
   private int[][]board;
+  private boolean animated;
+  private int delay;
 
+  public QueenBoard(){
+    this(8);
+  }
   public QueenBoard(int size){
     board = new int[size][size];
+    animated = false;
+    delay = 1000;
+  }
+
+  public void setAnimate(boolean newValue){
+    animated = newValue;
+  }
+
+  public void setDelay(int newValue){
+    delay = newValue;
   }
   /**
   *@return The output string formatted as follows:
@@ -116,7 +131,7 @@ public class QueenBoard{
   *        returns true when the board is solveable, and leaves the board in a solved state
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
   */
-  public boolean solve(){
+  public boolean solve() throws IllegalStateException{
     for(int[] i:board){
       for(int j:i){
         if (j != 0){
@@ -125,7 +140,9 @@ public class QueenBoard{
       }
     }
     if (solve(0)){
-      System.out.println(toString());
+      if (animated){
+        System.out.println(toString());
+      }
       return true;
     }
     return false;
@@ -137,6 +154,11 @@ public class QueenBoard{
     }else{
       for (int col = 0; col<board.length; col++){
         if(addQueen(row, col)){
+          if(animated){
+            System.out.println(Text.go(1,1));
+            System.out.println(this);//can modify here
+            Text.wait(delay);
+          }
           if(solve(row+1)){
             return true;
           }
@@ -151,7 +173,7 @@ public class QueenBoard{
   *@return the number of solutions found, and leaves the board filled with only 0's
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
   */
-  public int countSolutions(){
+  public int countSolutions() throws IllegalStateException{
     for(int[] i:board){
       for(int j:i){
         if (j != 0){
@@ -175,9 +197,6 @@ public class QueenBoard{
     }else{
       for (int col = 0; col<board.length; col++){
         if(addQueen(row, col)){
-          System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(50);//change the delay 1000 = 1 second
           counter+=countSolutions(row+1);
           removeQueen(row, col);
         }
