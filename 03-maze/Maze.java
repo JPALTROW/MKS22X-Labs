@@ -42,9 +42,15 @@ public class Maze{
     maze = new char[compile.size()][compile.get(1).length];
     for (int i = 0; i < compile.size(); i++){
       for (int j = 0; j < compile.get(i).length; j++){
-        maze[i][j] = compile.get(i)[j].charAt(0);
+        char entry = compile.get(i)[j].charAt(0);
+        if (entry == 'S'){
+          maze[i][j] = entry;
+          startRow = i;
+          startCol = j;
+        }
       }
     }
+    animate = false;
   }
 
   private void wait(int millis){
@@ -118,6 +124,28 @@ public class Maze{
       gotoTop();
       System.out.println(this);
       wait(50);
+    }
+    if (maze[row][col]=='E'){
+      return 0;
+    }
+    if (maze[row][col] == '#'||maze[row][col] == '.'||maze[row][col] == '@'){
+      return -1;
+    }
+    int j = solve(row, col+1);
+    int k = solve(row, col-1);
+    int l = solve(row+1, col);
+    int m = solve(row-1, col);
+    if(j>=0){
+      return j+1;
+    }
+    if(k>=0){
+      return k+1;
+    }
+    if(l>=0){
+      return l+1;
+    }
+    if(m>=0){
+      return m+1;
     }
 
     //COMPLETE SOLVE
