@@ -43,14 +43,14 @@ public class Maze{
     for (int i = 0; i < compile.size(); i++){
       for (int j = 0; j < compile.get(i).length; j++){
         char entry = compile.get(i)[j].charAt(0);
+        maze[i][j] = entry;
         if (entry == 'S'){
-          maze[i][j] = entry;
           startRow = i;
           startCol = j;
         }
       }
     }
-    animate = false;
+    animate = true;
   }
 
   private void wait(int millis){
@@ -123,32 +123,36 @@ public class Maze{
     if(animate){
       gotoTop();
       System.out.println(this);
-      wait(50);
+      wait(100);
     }
+
     if (maze[row][col]=='E'){
       return 0;
     }
     if (maze[row][col] == '#'||maze[row][col] == '.'||maze[row][col] == '@'){
       return -1;
     }
+    maze[row][col] = '@';
     int j = solve(row, col+1);
-    int k = solve(row, col-1);
-    int l = solve(row+1, col);
-    int m = solve(row-1, col);
     if(j>=0){
       return j+1;
+    }else{
+      int k = solve(row, col-1);
+      if(k>=0){
+        return k+1;
+      }else{
+        int l = solve(row+1, col);
+        if(l>=0){
+          return l+1;
+        }else{
+          int m = solve(row-1, col);
+          if(m>=0){
+            return m+1;
+          }
+        }
+      }
     }
-    if(k>=0){
-      return k+1;
-    }
-    if(l>=0){
-      return l+1;
-    }
-    if(m>=0){
-      return m+1;
-    }
-
-    //COMPLETE SOLVE
-    return -1; //so it compiles
+    maze[row][col] = '.';
+    return -1;
   }
 }
