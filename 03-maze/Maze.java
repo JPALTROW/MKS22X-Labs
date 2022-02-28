@@ -24,12 +24,16 @@ public class Maze{
     //COMPLETE CONSTRUCTOR
     ArrayList<String[]> compile = new ArrayList<String[]>();
     String[] line;
+    String data;
     try {
       File file = new File(filename);
       Scanner input = new Scanner(file);
       while (input.hasNextLine()){
-        line = input.nextLine().split("");
-        compile.add(line);
+        data = input.nextLine();
+        if (!data.equals("\n")){
+          line = data.split("");
+          compile.add(line);
+        }
       }
     }catch (FileNotFoundException ex){
       System.out.println("No such file");
@@ -68,7 +72,16 @@ public class Maze{
   It should look like the text file with some characters replaced.
   */
   public String toString(){
-    return "WRITE THIS METHOD";
+    clearTerminal();
+    gotoTop();
+    String compile = "";
+    for (int i=0; i<maze.length; i++){
+      for (int j=0; j<maze[i].length; j++){
+        compile+=maze[i][j];
+      }
+      compile+="\n";
+    }
+    return compile;
   }
 
   /*Wrapper Solve Function returns the helper function

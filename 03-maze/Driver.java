@@ -1,17 +1,8 @@
+import java.io.*;
+
 public class Driver{
-  public static void main(String[]args){
-
-    //files do not require an extension like .txt or .dat
-    String filename = "maze1";
-
-    try{
-      Maze f;
-      f = new Maze(filename);
-      f.setAnimate(true);
-      System.out.println(f.solve()+" steps");
-      System.out.println(f);
-    }catch(FileNotFoundException e){
-      System.out.println("Invalid filename: "+filename);
-    }
+  public static void main(String[]args) throws FileNotFoundException{
+    Maze test1 = new Maze("Maze1.txt");
+    System.out.println(test1);
   }
 }
