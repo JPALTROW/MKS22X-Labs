@@ -22,6 +22,25 @@ public class Maze{
   */
   public Maze(String filename) throws FileNotFoundException{
     //COMPLETE CONSTRUCTOR
+    ArrayList<String[]> compile = new ArrayList<String[]>();
+    String[] line;
+    try {
+      File file = new File(filename);
+      Scanner input = new Scanner(file);
+      while (input.hasNextLine()){
+        line = input.nextLine().split("");
+        compile.add(line);
+      }
+    }catch (FileNotFoundException ex){
+      System.out.println("No such file");
+      System.exit(0);
+    }
+    maze = new char[compile.size()][compile.get(1).length];
+    for (int i = 0; i < compile.size(); i++){
+      for (int j = 0; j < compile.get(i).length; j++){
+        maze[i][j] = compile.get(i)[j].charAt(0);
+      }
+    }
   }
 
   private void wait(int millis){
