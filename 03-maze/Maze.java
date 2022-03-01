@@ -50,10 +50,10 @@ public class Maze{
         }
       }
     }
-    animate = true;
+    animate = false;
   }
 
-  private void wait(int millis){
+  public void wait(int millis){
     try {
       Thread.sleep(millis);
     }
@@ -123,7 +123,7 @@ public class Maze{
     if(animate){
       gotoTop();
       System.out.println(this);
-      wait(100);
+      wait(10);
     }
 
     if (maze[row][col]=='E'){
