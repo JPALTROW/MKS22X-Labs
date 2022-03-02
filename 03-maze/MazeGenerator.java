@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MazeGenerator{
   public static void generate(char[][]maze,int startrow,int startcol){
     boolean stop = false;
@@ -33,6 +35,19 @@ public class MazeGenerator{
   }
 
   public static void generateM(char[][]maze,int startrow,int startcol){
+    int counter = 0;
+    int[][] dirs = {{0,1}, {0, -1}, {1, 0}, {-1, 0}};
+    ArrayList<Integer> nums = new ArrayList<Integer>();
+    if(maze[startrow][startcol] == '#' && startrow != 0 && startrow != maze.length && startcol != 0 && startcol != maze[0].length){
+      for (int[] dir:dirs){
+        if (maze[startrow + dir[0]][startcol + dir[1]] == ' '){
+          counter++;
+        }
+      }
+      if (counter < 2){
+        maze[startrow][startcol] = ' ';
+      }
 
+    }
   }
 }
