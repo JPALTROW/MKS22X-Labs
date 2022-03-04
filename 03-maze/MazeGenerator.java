@@ -34,11 +34,15 @@ public class MazeGenerator{
     }*/
   }
 
-  public static void generateM(char[][]maze,int startrow,int startcol){
-    int counter = 0;
+  public static int generateM(char[][]maze,int startrow,int startcol){
     int[][] dirs = {{0,1}, {0, -1}, {1, 0}, {-1, 0}};
     ArrayList<Integer> nums = new ArrayList<Integer>();
+    nums.add(0);
+    nums.add(1);
+    nums.add(2);
+    nums.add(3);
     if(maze[startrow][startcol] == '#' && startrow != 0 && startrow != maze.length && startcol != 0 && startcol != maze[0].length){
+      int counter = 0;
       for (int[] dir:dirs){
         if (maze[startrow + dir[0]][startcol + dir[1]] == ' '){
           counter++;
@@ -47,7 +51,31 @@ public class MazeGenerator{
       if (counter < 2){
         maze[startrow][startcol] = ' ';
       }
-
+      int randNum = nums.remove((int)(Math.random()*4));
+      int[] randDir = dirs[randNum];
+      int j = generateM(maze, startrow + randDir[0], startcol+randDir[1]);
+      if (j > -1){
+        return 0;
+      }
+      randNum = nums.remove((int)(Math.random()*3));
+      randDir = dirs[randNum];
+      j = generateM(maze, startrow + randDir[0], startcol+randDir[1]);
+      if (j > -1){
+        return 0;
+      }
+      randNum = nums.remove((int)(Math.random()*2));
+      randDir = dirs[randNum];
+      j = generateM(maze, startrow + randDir[0], startcol+randDir[1]);
+      if (j > -1){
+        return 0;
+      }
+      randNum = nums.remove((int)(Math.random()*1));
+      randDir = dirs[randNum];
+      j = generateM(maze, startrow + randDir[0], startcol+randDir[1]);
+      if (j > -1){
+        return 0;
+      }
     }
+    return -1;
   }
 }
