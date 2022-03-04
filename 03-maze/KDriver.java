@@ -7,9 +7,9 @@ public class KDriver{
       int startrow = Integer.parseInt(args[2]);
       int startcol = Integer.parseInt(args[3]);
       char[][]maze = new char[rows][cols];
-      for (char[] i  : maze){
-        for (char j : i){
-          j = '#';
+      for (int i = 0; i < maze.length; i++){
+        for (int j = 0; j < maze[0].length; j++){
+          maze[i][j] = '#';
         }
       }
       MazeGenerator.generate(maze,startrow,startcol);
