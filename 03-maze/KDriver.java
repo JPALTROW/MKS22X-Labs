@@ -13,7 +13,7 @@ public class KDriver{
         }
       }
       MazeGenerator.generate(maze,startrow,startcol);
-      System.out.println(maze);
+      MazeGenerator.printer(maze);
       System.out.println("MAZE!");//You need a way to show the maze without the array brackets etc.
     }else if(args.length == 1  || args.length == 2){
       try{

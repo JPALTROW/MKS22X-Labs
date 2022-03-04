@@ -43,7 +43,7 @@ public class MazeGenerator{
     System.out.println("\033[1;1H");
   }
 
-  public static String printer(char[][] maze){
+  public static void printer(char[][] maze){
     clearTerminal();
     gotoTop();
     String compile = "";
@@ -53,7 +53,7 @@ public class MazeGenerator{
       }
       compile+="\n";
     }
-    return compile;
+    System.out.println(compile);
   }
 
   public static int generateM(char[][]maze,int startrow,int startcol){
