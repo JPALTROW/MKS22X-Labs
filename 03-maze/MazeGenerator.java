@@ -34,6 +34,28 @@ public class MazeGenerator{
     }*/
   }
 
+  public static void clearTerminal(){
+    //erase terminal
+    System.out.println("\033[2J");
+  }
+  public static void gotoTop(){
+    //go to top left of screen
+    System.out.println("\033[1;1H");
+  }
+
+  public static String printer(char[][] maze){
+    clearTerminal();
+    gotoTop();
+    String compile = "";
+    for (int i=0; i<maze.length; i++){
+      for (int j=0; j<maze[i].length; j++){
+        compile+=maze[i][j];
+      }
+      compile+="\n";
+    }
+    return compile;
+  }
+
   public static int generateM(char[][]maze,int startrow,int startcol){
     int[][] dirs = {{0,1}, {0, -1}, {1, 0}, {-1, 0}};
     ArrayList<Integer> nums = new ArrayList<Integer>();
