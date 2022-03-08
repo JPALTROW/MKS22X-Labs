@@ -59,4 +59,8 @@ public class Bronze{
     }
     return 0l;
   }
+
+  public static void main(String[] args) {
+    System.out.println(solve("tester1.txt"));
+  }
 }
