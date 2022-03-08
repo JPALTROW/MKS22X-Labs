@@ -25,7 +25,7 @@ public class Silver{
       int c1 = Integer.parseInt(data[1]);
       int r2 = Integer.parseInt(data[2]);
       int c2 = Integer.parseInt(data[3]);
-      return count(field, r1, c1, r2, c2, T, 0);
+      return count(field, r1-1, c1-1, r2-1, c2-1, T, 0);
     }catch (FileNotFoundException ex){
       System.out.println("No such file");
       System.exit(0);
@@ -36,10 +36,10 @@ public class Silver{
   public static long count(char[][] field, int r1, int c1, int r2, int c2, int T, long count){
     int[][] dirs = {{0,1}, {0, -1}, {1,0}, {-1, 0}};
     long counter = 0;
-    if (field[r1][c1] == '*'){
+    if (r1 < 0 || c1< 0 || r1 >= field.length||c1 >= field[0].length){
       return 0l;
     }
-    if (r1 < 0 || c1< 0 || r1 >= field.length||c1 >= field[0].length){
+    if (field[r1][c1] == '*'){
       return 0l;
     }
     if (Math.abs(r1-r2)+Math.abs(c1-c2) > T){
