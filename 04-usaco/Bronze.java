@@ -49,9 +49,10 @@ public class Bronze{
       long counter = 0;
       for (int i = 0; i < R; i++){
         for (int j = 0; j < C; j++){
-          counter += Math.max(0, E - lake[i][j]);
+          counter += (long)(Math.max(0, E - lake[i][j]));
         }
       }
+      return counter * 72l * 72l;
     }catch (FileNotFoundException ex){
       System.out.println("No such file");
       System.exit(0);
