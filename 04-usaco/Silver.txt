@@ -1,0 +1,17 @@
+Jacob Paltrowitz
+March 9, 2022
+Mr. Konstantinovich
+MKS22X
+Silver
+
+The plan for this problem can be broken into two main steps. First, we scan in the input, break it into the appropriate pieces, and put those pieces into variables. Next, we will use a recursive helper function to count the number of ways to get from the start to the end. 
+
+Reading in the file: Using the scanner, we can break the input into its three main components. The first line can be scanned in, split, and parsed to create the integer variables N, M, and T, as defined in the problem. Using M and N, we can initialize a 2D NxM char array. Next, we can loop N times, reading in a line, splitting it, and placing each element of these rows as an element of the row of the char array. We read in the last line, splitting to find r1, c1, r2, c2. (It is important to note that the rows and columns are labeled starting from 1, not 0).
+
+Recursion: We define a helper recursive function that takes parameters of the 2D char array, start coordinates(r1, c1), end coordinates(r2, c2), and time. 
+	Base Cases: 
+		If the starting coordinate is a tree or outside the board, return 0. 
+		If the time is 0, see whether or not start equals end, returning 0 or 1 respectively. 
+		(time saving) if the Manhattan distance between the start coordinates and end coordinates is greater than time, return 0. 
+	Recursive call:
+		sum the number of solutions from start points at each of the adjacent points, with time decremented by 1. 
