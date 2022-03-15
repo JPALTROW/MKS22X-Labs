@@ -12,9 +12,25 @@ public class Preliminary{
   public static int partition ( int [] data, int start, int end){
     int pivot = (int)(Math.random() * (end-start+1))+start;
     int store = data[pivot];
-    data[pivot] =
-    for (int i = start; i <= end; i++){
-      if ()
+    data[pivot]= data[start];
+    boolean lastEq = true;
+    pivot = start;
+    data[start] = store;
+    int hold;
+    for(int i = start+1; i <= end; i++){
+      hold = data[i];
+      if (hold == store){
+        lastEq = !lastEq;
+      }
+      if (hold < store || (lastEq && hold == store)){
+        data[i]=store;
+        data[pivot] = hold;
+        pivot = i;
+      }else if(hold > store || (lastEq && hold == store)){
+        data[i]=data[end];
+        data[end] = hold;
+        end--;
+      }
     }
     return 0;
   }
