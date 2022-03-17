@@ -21,26 +21,22 @@ public class Quick{
     int hold;
     int pivotP = start;
 
-
     for(int i = start+1; i <= end; i++){
       hold = data[i];
       if (hold == store){
         lastEq = !lastEq;
       }
-      if (hold < store || (lastEq && hold == store)){
+      if (hold < store || (!lastEq && hold == store)){
         pivotP++;
-
       }else if(hold > store || (lastEq && hold == store)){
         data[i]=data[end];
         data[end] = hold;
         end--;
         i--;
       }
-
     }
     data[start]=data[pivotP];
     data[pivotP]=store;
-
     return pivotP;
   }
 
@@ -49,7 +45,7 @@ public class Quick{
   }
 
   public static void quicksort(int[]data,int lo,int hi){
-    if (lo <= hi){
+    if (lo <= hi - 1){
       int p = partition(data, lo, hi);
       quicksort(data, lo, p-1);
       quicksort(data, p+1, hi);
@@ -60,7 +56,7 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
   *@param data must have a length > 0
   *@param k is 0 to data.length-1 inclusive
-  *@postcondition The array may be modified. */
+  *@postcondition The array may be modified.*/
   public static int quickselect(int []data, int k){
     int pivot;
     int start = 0;
@@ -86,12 +82,15 @@ public class Quick{
     System.out.println(quickselect(data, 2));
     System.out.println(quickselect(data, 3));
     System.out.println(quickselect(data, 4));*/
-    // int[] data = new int[10];
-    // for (int i = 0; i < 10; i++){
-    //   data[i] = (int)(10*Math.random());
-    // }
-    int[] data = new int[]{1,2,3,5,6,2,4,3,0};
+    int[] data = new int[1000000];
+    for(int i = 0; i < 1000000; i++){
+      data[i] = (int)(1000*Math.random());
+    }
     quicksort(data);
-    System.out.println(Arrays.toString(data));
+    for(int i = 1; i < 1000000; i++){
+      if(data[i]<data[i-1]){
+        System.out.println("bad");
+      }
+    }
   }
 }
