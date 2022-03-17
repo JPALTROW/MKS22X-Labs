@@ -49,7 +49,7 @@ public class Quick{
   }
 
   public static void quicksort(int[]data,int lo,int hi){
-    if (lo != hi){
+    if (lo <= hi){
       int p = partition(data, lo, hi);
       quicksort(data, lo, p-1);
       quicksort(data, p+1, hi);
@@ -80,12 +80,17 @@ public class Quick{
   }
 
   public static void main(String[] args) {
-    int [] data = new int[] {4,3,2,1,0};
-    /*System.out.println(quickselect(data, 0));
+    /*int [] data = new int[] {4,3,2,1,0};
+    System.out.println(quickselect(data, 0));
     System.out.println(quickselect(data, 1));
     System.out.println(quickselect(data, 2));
     System.out.println(quickselect(data, 3));
     System.out.println(quickselect(data, 4));*/
+    // int[] data = new int[10];
+    // for (int i = 0; i < 10; i++){
+    //   data[i] = (int)(10*Math.random());
+    // }
+    int[] data = new int[]{1,2,3,5,6,2,4,3,0};
     quicksort(data);
     System.out.println(Arrays.toString(data));
   }
