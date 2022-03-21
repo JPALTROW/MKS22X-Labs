@@ -82,15 +82,11 @@ public class Quick{
     System.out.println(quickselect(data, 2));
     System.out.println(quickselect(data, 3));
     System.out.println(quickselect(data, 4));*/
-    int[] data = new int[1000000];
-    for(int i = 0; i < 1000000; i++){
-      data[i] = (int)(1000*Math.random());
-    }
+    int[] data = new int[50000000];
+    /*for(int i = 0; i < 50000000; i++){
+      data[i] = (int)(300000*Math.random());
+    }*/
     quicksort(data);
-    for(int i = 1; i < 1000000; i++){
-      if(data[i]<data[i-1]){
-        System.out.println("bad");
-      }
-    }
+    Arrays.sort(data);
   }
 }
