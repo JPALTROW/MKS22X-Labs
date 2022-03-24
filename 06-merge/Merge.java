@@ -26,7 +26,7 @@ public class Merge{
     return destination;
   }
 
-  public static void merge(int[] data){
+  public static void mergesort(int[] data){
     int[] temp = mergesortH(data);
     for(int i = 0; i < data.length; i++){
       data[i] = temp[i];
@@ -46,21 +46,5 @@ public class Merge{
       right[j-left.length] = data[j];
     }
     return merge(mergesortH(left), mergesortH(right));
-  }
-
-  public static void main(String[] args) {
-    /*int[] left = {1,3,5,7,9};
-    int[] right = {2,4,6,8,10};
-    System.out.println(Arrays.toString(merge(left, right)));*/
-    int[] tester = new int[1000];
-    for (int i = 0; i < 1000; i++){
-      tester[i] = (int)(Math.random() * 1000);
-    }
-    //merge(tester);
-    for (int i = 1; i< 1000; i++){
-      if (tester[i] < tester[i-1]){
-        System.out.println("aaaaaaah sppoooooookkyy");
-      }
-    }
   }
 }
