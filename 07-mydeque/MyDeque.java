@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MyDeque<E>{
   private E[] data;
   private int size;
@@ -20,6 +22,9 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
+    if (size == 0){
+      return "";
+    }
     String compile = "";
     for (int i = start; i%size < end; i++){
       compile += data[i];
