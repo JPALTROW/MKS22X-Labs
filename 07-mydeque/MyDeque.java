@@ -8,6 +8,9 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[initialCapacity];
     data = d;
+    start = 0;
+    end = 0;
+    size = 0;
   }
   public MyDeque(){
     this(10);
@@ -16,7 +19,13 @@ public class MyDeque<E>{
   public int size(){
     return size;
   }
-  // public String toString(){ }
+  public String toString(){
+    String compile = "";
+    for (int i = start; i%size < end; i++){
+      compile += data[i];
+    }
+    return compile;
+  }
   // public void addFirst(E element){ }
   // public void addLast(E element){ }
   // public E removeFirst(){ }
