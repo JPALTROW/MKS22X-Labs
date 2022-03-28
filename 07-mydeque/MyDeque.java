@@ -22,17 +22,41 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
-    if (size == 0){
+    if (data.length == 0){
       return "";
     }
     String compile = "";
-    for (int i = start; i%size < end; i++){
-      compile += data[i];
+    if (start <= end){
+      for (int i = start; i < end; i++){
+        compile+=data[i];
+      }
+    }else{
+      for (int i = start; i < data.length; i++){
+        compile+=data[i];
+      }
+      for (int i = 0; i < end; i++){
+        compile+=data[i];
+      }
     }
     return compile;
   }
-  // public void addFirst(E element){ }
-  // public void addLast(E element){ }
+
+  public void addFirst(E element){
+    if (start == 0){
+      data[data.length - 1] = element;
+      start = data.length - 1;
+    }else{
+      data[start-1] = element;
+      start--;
+    }
+    size++;
+  }
+
+  public void addLast(E element){
+    data[(end)%data.length] = element;
+    end=(end+1)%data.length;
+    size++;
+  }
   // public E removeFirst(){ }
   // public E removeLast(){ }
   // public E getFirst(){ }
