@@ -44,11 +44,12 @@ public class MyDeque<E>{
       for (int i = 0; i < end; i++){
         d[data.length-start+i] = data[i];
       }
-      end=end-start;
+      end=size;
       start=0;
     }
     data=d;
   }
+
   public String toString(){
     if (data.length == 0){
       return "[]";
@@ -96,9 +97,6 @@ public class MyDeque<E>{
   public void addLast(E element){
     if (element == null){
       throw new NullPointerException("Adding null element");
-    }
-    if (end < 0){
-      System.out.println("akuwygvckqurwfckuekuawfeckuwyfef");
     }
     data[(end)%data.length] = element;
     end=(end+1)%data.length;
