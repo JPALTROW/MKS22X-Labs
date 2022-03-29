@@ -1,14 +1,11 @@
 public class Driver{
   public static void main(String[] args) {
     MyDeque<Integer> tester = new MyDeque<Integer>();
-    System.out.println(tester);
-    tester.addFirst(1345);
-    tester.addLast(987654);
-    System.out.println(tester);
-    tester.removeLast();
-    tester.addLast(1);
-    tester.addLast(123456);
-    tester.removeFirst();
+    for (int i = 0; i <30; i++){
+      tester.addFirst(i);
+      tester.addLast(200-i);
+    }
+    System.out.println(tester.toStringDebug());
     System.out.println(tester);
   }
 }

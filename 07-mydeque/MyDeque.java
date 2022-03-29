@@ -22,6 +22,14 @@ public class MyDeque<E>{
     return size;
   }
 
+  public String toStringDebug(){
+    String compile = "[";
+    for (int i = 0; i < data.length; i++){
+      compile+=data[i]+", ";
+    }
+    return compile;
+  }
+
   private void resize(){
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[2*size()-1];
@@ -31,11 +39,13 @@ public class MyDeque<E>{
       }
     }else{
       for (int i = start; i < data.length; i++){
-        d[i-start]= data[start];
+        d[i-start]= data[i];
       }
       for (int i = 0; i < end; i++){
         d[data.length-start+i] = data[i];
       }
+      end=end-start;
+      start=0;
     }
     data=d;
   }
@@ -86,6 +96,9 @@ public class MyDeque<E>{
   public void addLast(E element){
     if (element == null){
       throw new NullPointerException("Adding null element");
+    }
+    if (end < 0){
+      System.out.println("akuwygvckqurwfckuekuawfeckuwyfef");
     }
     data[(end)%data.length] = element;
     end=(end+1)%data.length;
