@@ -44,7 +44,7 @@ public class MyDeque<E>{
       return "[]";
     }
     String compile = "[";
-    if (start <= end){
+    if (start < end){
       for (int i = start; i < end; i++){
         compile+=data[i];
         if (i <end-1){
