@@ -123,6 +123,20 @@ public class MyDeque<E>{
     size--;
     return datum;
   }
-  // public E getFirst(){ }
-  // public E getLast(){ }
+  public E getFirst(){
+    if (size == 0){
+      throw new NoSuchElementException("Getting from Empty deque");
+    }
+    return data[start];
+  }
+  public E getLast(){
+    if (size == 0){
+      throw new NoSuchElementException("Removing from Empty deque");
+    }
+    if (end == 0){
+      return data[data.length-1];
+    }else{
+      return data[end-1];
+    }
+  }
 }
