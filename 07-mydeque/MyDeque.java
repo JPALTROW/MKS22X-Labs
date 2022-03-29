@@ -23,22 +23,29 @@ public class MyDeque<E>{
   }
   public String toString(){
     if (data.length == 0){
-      return "";
+      return "[]";
     }
-    String compile = "";
+    String compile = "[";
     if (start <= end){
       for (int i = start; i < end; i++){
         compile+=data[i];
+        if (i <end-1){
+          compile+=", ";
+        }
       }
     }else{
       for (int i = start; i < data.length; i++){
         compile+=data[i];
+        compile+=", ";
       }
       for (int i = 0; i < end; i++){
         compile+=data[i];
+        if (i <end-1){
+          compile+=", ";
+        }
       }
     }
-    return compile;
+    return compile+"]";
   }
 
   public void addFirst(E element){
