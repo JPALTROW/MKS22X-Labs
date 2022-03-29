@@ -21,6 +21,25 @@ public class MyDeque<E>{
   public int size(){
     return size;
   }
+
+  private void resize(){
+    @SuppressWarnings("unchecked")
+    E[] d = (E[])new Object[2*size()-1];
+    if (start < end){
+      for (int i = start; i < end; i++){
+        d[i]=data[i];
+      }
+    }else{
+      for (int i = start; i < data.length; i++){
+        d[i-start]= data[start];
+      }
+      for (int i = 0; i < end; i++){
+        d[data.length-start+i] = data[i];
+      }
+    }
+    size = 2*size()+1;
+    data=d;
+  }
   public String toString(){
     if (data.length == 0){
       return "[]";
@@ -57,12 +76,18 @@ public class MyDeque<E>{
       start--;
     }
     size++;
+    if (size == data.length){
+      resize();
+    }
   }
 
   public void addLast(E element){
     data[(end)%data.length] = element;
     end=(end+1)%data.length;
     size++;
+    if (size == data.length){
+      resize();
+    }
   }
 
   public E removeFirst(){
