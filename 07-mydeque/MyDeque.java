@@ -37,7 +37,6 @@ public class MyDeque<E>{
         d[data.length-start+i] = data[i];
       }
     }
-    size = 2*size()+1;
     data=d;
   }
   public String toString(){
@@ -68,6 +67,9 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+    if (element == null){
+      throw new NullPointerException("Adding null element");
+    }
     if (start == 0){
       data[data.length - 1] = element;
       start = data.length - 1;
@@ -82,6 +84,9 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
+    if (element == null){
+      throw new NullPointerException("Adding null element");
+    }
     data[(end)%data.length] = element;
     end=(end+1)%data.length;
     size++;
@@ -91,6 +96,9 @@ public class MyDeque<E>{
   }
 
   public E removeFirst(){
+    if (size == 0){
+      throw new NoSuchElementException("Removing from Empty deque");
+    }
     E datum = data[start];
     data[start]=null;
     start = (start+1)%data.length;
@@ -99,6 +107,9 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
+    if (size == 0){
+      throw new NoSuchElementException("Removing from Empty deque");
+    }
     E datum;
     if(end == 0){
       datum = data[data.length];
