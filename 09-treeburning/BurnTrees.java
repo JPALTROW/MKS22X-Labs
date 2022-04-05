@@ -2,20 +2,19 @@ import java.util.*;
 public class BurnTrees{
   private int[][]map;
   private int ticks;
+  private Frontier frontier;
   private static final int TREE = 2;
   private static final int FIRE = 1;
   private static final int ASH = 3;
   private static final int SPACE = 0;
+  private static final int[][] dirs = new int[][] {{0,1}, {0,-1}, {1,0}, {-1, 0}};
 
 
   /*Determine if the simulation is still burning
    *@return false if any fires are still burning, true otherwise
    */
   public boolean done(){
-    //YOU MUST IMPLEMENT THIS METHOD
-    //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
-    //HINT: do not check the board for fire which is an n^2 operation
-    return false;//placeholder for compilation purposes
+    return (frontier.size() == 0);
   }
 
 
@@ -25,6 +24,22 @@ public class BurnTrees{
    */
   public void tick(){
     ticks++;//leave this here.
+    int burners = frontier.size();
+    int[] firey;
+    int xcor;
+    int ycor;
+    for (int i = 0; i < burners; i++){
+      firey = frontier.remove();
+      for (int[] dir : dirs){
+        xcor = firey[0]+dir[0];
+        ycor = firey[1]+dir[1];
+        if (xcor >= 0 && xcor < map.length && ycor >= 0 && ycor <map[0].length){
+          if (map[xcor][ycor] == TREE){
+            frontier.add(new int[] {xcor, ycor});
+          }
+        }
+      }
+    }
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
   }
