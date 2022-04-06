@@ -36,9 +36,11 @@ public class BurnTrees{
         if (xcor >= 0 && xcor < map.length && ycor >= 0 && ycor <map[0].length){
           if (map[xcor][ycor] == TREE){
             frontier.add(new int[] {xcor, ycor});
+            map[xcor][ycor] = FIRE;
           }
         }
       }
+      map[firey[0]][firey[1]] = ASH;
     }
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
