@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.*;
 public class BurnTrees{
   private int[][]map;
   private int ticks;
@@ -61,8 +62,8 @@ public class BurnTrees{
          }
        }
      }
-     start();//set the left column on fire.
      frontier = new Frontier();
+     start();//set the left column on fire.
   }
 
 
@@ -80,13 +81,23 @@ public class BurnTrees{
     }
   }
 
+  public static double averageOfNRuns(int n, int size, double density){
+    int counter = 0;
+    BurnTrees b;
+    for (int i = 0; i < n; i++){
+      b = new BurnTrees(size, size, density);
+      counter+=b.run();
+    }
+    return (0.0+counter)/n;
+  }
+
 
 
     public static void main(String[]args){
       int WIDTH = 20;
       int HEIGHT = 20;
       int DELAY = 200;
-      double DENSITY = 0.7;
+      double DENSITY = 0.62;
       if(args.length > 1){
         WIDTH = Integer.parseInt(args[0]);
         HEIGHT = Integer.parseInt(args[1]);
@@ -95,6 +106,10 @@ public class BurnTrees{
       if(args.length > 3){
         DELAY = Integer.parseInt(args[3]);
       }
+      DecimalFormat df = new DecimalFormat("#.###");
+      /*for(double i = 0; i < 1; i+= .01){
+        System.out.println(""+df.format(i)+"            "+averageOfNRuns(1000, 100, i));
+      }*/
       BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
 
 
