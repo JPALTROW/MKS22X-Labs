@@ -94,7 +94,7 @@ public class BurnTrees{
 
 
     public static void main(String[]args){
-      int WIDTH = 20;
+      /*int WIDTH = 20;
       int HEIGHT = 20;
       int DELAY = 200;
       double DENSITY = 0.62;
@@ -105,16 +105,23 @@ public class BurnTrees{
       }
       if(args.length > 3){
         DELAY = Integer.parseInt(args[3]);
-      }
-      DecimalFormat df = new DecimalFormat("#.###");
-      /*for(double i = 0; i < 1; i+= .01){
-        System.out.println(""+df.format(i)+"            "+averageOfNRuns(1000, 100, i));
       }*/
-      BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+      DecimalFormat df = new DecimalFormat("#.###");
+      System.out.println("Density | Average Ticks");
+      System.out.println("--- | ---");
+      for(double i = 0; i < 1.05; i+= .05){
+        System.out.println(""+df.format(i)+" | "+averageOfNRuns(500, 100, i));
+      }
+      System.out.println();
+      System.out.println("Density | Average Ticks");
+      System.out.println("--- | ---");
+      for (double i = .55; i < .71; i+= .01){
+        System.out.println(""+df.format(i)+" | "+averageOfNRuns(500, 100, i));
+      }
 
 
-      int ans = b.animate(DELAY);//animate all screens
-      System.out.println(ans);//print the final answer
+      //int ans = b.animate(DELAY);//animate all screens
+      //System.out.println(ans);//print the final answer
 
       //int ans = b.outputAll();//print all screens one after another
       //System.out.println(ans);//print the final answer
