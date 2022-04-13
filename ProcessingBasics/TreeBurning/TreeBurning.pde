@@ -17,7 +17,7 @@
      *At this point you have initialized width, height,ROWS,COLS. You can change these values
      *to alter the screen size, but you cannot just change one value!
      *What must be true about the ratio of these values in order for this simulation to display squares?
-     *ANSWER HERE:
+     *ANSWER HERE: The ratio of the values must be equal to the ratio of width to height.
      */
 
     DENSITY = .61;
@@ -28,7 +28,7 @@
      *ANSWER : replace squareSize = 8; with the correct square size.
      * DO NOT just write a number, it must work when you change the size() command or the ROWS and COLS
      */
-    SQUARESIZE = 8;//side length
+    SQUARESIZE = height/ROWS;//side length
 
   }
 
@@ -42,11 +42,11 @@
     }
     /**question 3 *********************************
      *Here we only call tick() when the frameCount % 10 == 0.
-     *Why do we want to do this?
+     *Why do we want to do this? 
      *(The print statement is NOT part of the simulation, it is to help you answer this question)
      *hint:  If you cannot figure this out analytically, experiment to test
      *       the difference by changing the code. A print statement is commented out to facilitate testing.
-     *ANSWER HERE:
+     *ANSWER HERE: This allows us to slow down the effective frame rate, only updating once every 10 frames. 
      */
 
     String[]lines = treeSim.toString().split("\n");
@@ -71,7 +71,7 @@
      *Please use the same values that it was initialized with in the setup.
      * ANSWER: UPDATE THE NEXT LINE
      */
-    treeSim = null;
+    treeSim = new BurnTrees(ROWS, COLS, DENSITY);
   }
 
 
@@ -88,6 +88,25 @@
      *2. Decide how to fill them in using the String[] parameter
      *   Colors: Fire = RED, Tree = GREEN, SPACE = WHITE, ASH = GREY
      */
+     String[] squares;
+     
+     for(int row = 0; row<lines.length; row++){
+       squares = lines[row].split("");
+       for(int col = 0; col < squares.length; col++){
+         switch(squares[col].charAt(0)){
+           case ' ':
+             fill(255);
+           case '@':
+             fill(31, 240, 45);
+           case 'w':
+             fill(255, 38, 0);
+           default:
+             fill(127);
+         }
+         
+         square(row*SQUARESIZE, col*SQUARESIZE, SQUARESIZE);
+       }
+     }
 
   }
 
