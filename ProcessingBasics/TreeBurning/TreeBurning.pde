@@ -93,6 +93,7 @@
      for(int row = 0; row<lines.length; row++){
        squares = lines[row].split("");
        for(int col = 0; col < squares.length; col++){
+         print(squares[col].charAt(0);
          switch(squares[col].charAt(0)){
            case ' ':
              fill(255);
