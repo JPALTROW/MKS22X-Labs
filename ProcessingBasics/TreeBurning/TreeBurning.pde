@@ -11,8 +11,8 @@
 
   void setup() {
     size(600, 500);
-    ROWS = 50;
-    COLS = 60;
+    ROWS = 125;
+    COLS = 150;
     /**question 1 *********************************
      *At this point you have initialized width, height,ROWS,COLS. You can change these values
      *to alter the screen size, but you cannot just change one value!
@@ -83,29 +83,31 @@
    *ANSWER: Complete this method.
    */
   void stringToSquares(String[]lines) {
+    noStroke();
     /**Complete this method.
      *1. Break up your screen by drawing ROWSxCOLS squares of the same color.
      *2. Decide how to fill them in using the String[] parameter
      *   Colors: Fire = RED, Tree = GREEN, SPACE = WHITE, ASH = GREY
      */
-     String[] squares;
      
      for(int row = 0; row<lines.length; row++){
-       squares = lines[row].split("");
-       for(int col = 0; col < squares.length; col++){
-         print(squares[col].charAt(0);
-         switch(squares[col].charAt(0)){
+       for(int col = 0; col < lines[row].length(); col++){
+         switch(lines[row].charAt(col)){
            case ' ':
              fill(255);
+             break;
            case '@':
              fill(31, 240, 45);
+             break;
            case 'w':
              fill(255, 38, 0);
+             break;
            default:
-             fill(127);
+             fill(165);
+             break;
          }
          
-         square(row*SQUARESIZE, col*SQUARESIZE, SQUARESIZE);
+         square(col*SQUARESIZE, row*SQUARESIZE, SQUARESIZE);
        }
      }
 
