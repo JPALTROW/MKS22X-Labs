@@ -28,10 +28,19 @@ public class Orb {
     //PART 2
     //change the x based on the xSpeed
     //change the y based on the ySpeed
-
+    x = x + xSpeed;
+    y = y + ySpeed;
     //PART 3
     //Change the speed when you collide with the end of the screen (all 4 sides)
-
+    if(x < radius){
+      xSpeed*=-1;
+    }else if(x > width - radius){
+      xSpeed*=-1;
+    }else if(y < radius){
+      ySpeed*= -1;
+    }else if(y > height - radius){
+      ySpeed*=-1;
+    }
     //Part 4
     //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
     //You don't need a variable for this if every object experiences the same
