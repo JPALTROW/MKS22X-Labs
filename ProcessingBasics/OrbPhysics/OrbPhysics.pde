@@ -17,6 +17,6 @@ void draw() {
     o.display();
   }
   fill(0);
-  text(frameRate, 20, 20);
-  text(orbList.size(), 20, 40);
+  //text(frameRate, 20, 20);
+  //text(orbList.size(), 20, 40);
 }
