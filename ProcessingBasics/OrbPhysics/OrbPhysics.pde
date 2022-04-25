@@ -1,4 +1,4 @@
-ArrayList<Orb>orbList;
+ArrayList<Orb>orst;
 void setup() {
   size(1000, 700);
   orbList = new ArrayList<Orb>();
