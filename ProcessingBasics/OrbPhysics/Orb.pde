@@ -4,6 +4,7 @@ public class Orb {
   float xSpeed, ySpeed;
   float radius;
   color c;
+  float dist;
 
   public Orb(float x_, float y_, float xSpeed_, float ySpeed_, float radius_ ) {
     x = x_;
@@ -25,7 +26,13 @@ public class Orb {
     //make sure you read the parameters of ellipse, so that you have the correct size.
     //radius is NOT one of the parameters of ellipse by default.
     fill(c, 128);
+    noStroke();
     ellipse(x, y, 2*radius, 2*radius);
+  }
+  
+  void attract(Orb other){
+    other.xSpeed += 7*(width/2 - other.x)/(dist*dist);
+    other.ySpeed += 7*(height/2 - other.y)/(dist*dist);
   }
 
   void move() {
@@ -37,7 +44,7 @@ public class Orb {
     //PART 3
     //Change the speed when you collide with the end of the screen (all 4 sides)
     
-    if(x < radius){
+    /*if(x < radius){
       xSpeed*=-1.0;
       x = radius;
     }else if(x > width - radius){
@@ -49,11 +56,13 @@ public class Orb {
     }else if(y > height - radius){
       ySpeed*=-1.0;
       y = abs(radius - height);
-    }
+    }*/
+    dist = dist(x,y,500,350);
     //Part 4
     //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
     //You don't need a variable for this if every object experiences the same
     //gravitational constant (find the value that looks nice experimentally, 9.8 will not work well).
-    ySpeed += 1;
+    //ySpeed += .3;
+    attract(this);
   }
 }
