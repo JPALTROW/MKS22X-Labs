@@ -4,7 +4,6 @@ public class Orb {
   float xSpeed, ySpeed;
   float radius;
   color c;
-  SoundFile file;
 
   public Orb(float x_, float y_, float xSpeed_, float ySpeed_, float radius_ ) {
     x = x_;
@@ -55,6 +54,6 @@ public class Orb {
     //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
     //You don't need a variable for this if every object experiences the same
     //gravitational constant (find the value that looks nice experimentally, 9.8 will not work well).
-    ySpeed += .5;
+    ySpeed += 1;
   }
 }
