@@ -15,8 +15,8 @@ public class Orb {
     //random color... why not.
     c = color(random(255), random(255), random(255));
   }
-  
-  
+
+
 
 
   void display() {
@@ -26,43 +26,37 @@ public class Orb {
     //make sure you read the parameters of ellipse, so that you have the correct size.
     //radius is NOT one of the parameters of ellipse by default.
     fill(c, 128);
-    noStroke();
     ellipse(x, y, 2*radius, 2*radius);
+    line(x, y, x+5*xSpeed, y+5*ySpeed);
+    fill(0);
+    triangle(x+5*xSpeed, y+5*ySpeed, x+4*xSpeed+ySpeed, y+4*ySpeed-xSpeed, x+4*xSpeed-ySpeed, y+4*ySpeed+xSpeed);
   }
-  
-  void attract(Orb other){
-    other.xSpeed += 7*(width/2 - other.x)/(dist*dist);
-    other.ySpeed += 7*(height/2 - other.y)/(dist*dist);
+
+  void attract(Orb other) {
+    dist = dist(x, y, other.x, other.y);
+    other.xSpeed += 20*(x - other.x)/(dist*dist);
+    other.ySpeed += 20*(y - other.y)/(dist*dist);
+  }
+
+  void gravity() {
+    if (x < radius) {
+      xSpeed*=-1.0;
+      x = radius;
+    } else if (x > width - radius) {
+      xSpeed*=-1.0;
+      x = abs(radius-width);
+    } else if (y < radius) {
+      ySpeed*=-1.0;
+      y = radius;
+    } else if (y > height - radius) {
+      ySpeed*=-1.0;
+      y = abs(radius - height);
+    }
+    ySpeed += .15;
   }
 
   void move() {
-    //PART 2
-    //change the x based on the xSpeed
-    //change the y based on the ySpeed
     x = x + xSpeed;
     y = y + ySpeed;
-    //PART 3
-    //Change the speed when you collide with the end of the screen (all 4 sides)
-    
-    /*if(x < radius){
-      xSpeed*=-1.0;
-      x = radius;
-    }else if(x > width - radius){
-      xSpeed*=-1.0;
-      x = abs(radius-width);
-    }else if(y < radius){
-      ySpeed*=-1.0;
-      y = radius;
-    }else if(y > height - radius){
-      ySpeed*=-1.0;
-      y = abs(radius - height);
-    }*/
-    dist = dist(x,y,500,350);
-    //Part 4
-    //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
-    //You don't need a variable for this if every object experiences the same
-    //gravitational constant (find the value that looks nice experimentally, 9.8 will not work well).
-    //ySpeed += .3;
-    attract(this);
   }
 }
