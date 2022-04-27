@@ -26,10 +26,10 @@ public class Orb {
     //make sure you read the parameters of ellipse, so that you have the correct size.
     //radius is NOT one of the parameters of ellipse by default.
     fill(c, 128);
+    noStroke();
     ellipse(x, y, 2*radius, 2*radius);
+    stroke(0);
     line(x, y, x+5*xSpeed, y+5*ySpeed);
-    fill(0);
-    triangle(x+5*xSpeed, y+5*ySpeed, x+4*xSpeed+ySpeed, y+4*ySpeed-xSpeed, x+4*xSpeed-ySpeed, y+4*ySpeed+xSpeed);
   }
 
   void attract(Orb other) {
@@ -39,23 +39,34 @@ public class Orb {
   }
 
   void gravity() {
-    if (x < radius) {
-      xSpeed*=-1.0;
-      x = radius;
-    } else if (x > width - radius) {
-      xSpeed*=-1.0;
-      x = abs(radius-width);
-    } else if (y < radius) {
-      ySpeed*=-1.0;
-      y = radius;
-    } else if (y > height - radius) {
-      ySpeed*=-1.0;
-      y = abs(radius - height);
-    }
     ySpeed += .15;
   }
 
+  void attractSpring(Orb other) {
+    dist = dist(x, y, other.x, other.y);
+    float force = (dist - SPRING_LENGTH) * SPRING_CONSTANT;
+    other.xSpeed += force*((x-other.x)/dist);
+    other.xSpeed *= SPRING_DAMPEN;
+    other.ySpeed += force*((y-other.y)/dist);
+    other.ySpeed *= SPRING_DAMPEN;
+  }
+
   void move() {
+    if (mode == GRAVITY) {
+      if (x < radius) {
+        xSpeed*=-1.0;
+        x = radius;
+      } else if (x > width - radius) {
+        xSpeed*=-1.0;
+        x = abs(radius-width);
+      } else if (y < radius) {
+        ySpeed*=-1.0;
+        y = radius;
+      } else if (y > height - radius) {
+        ySpeed*=-1.0;
+        y = abs(radius - height);
+      }
+    }
     x = x + xSpeed;
     y = y + ySpeed;
   }
