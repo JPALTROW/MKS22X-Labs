@@ -3,6 +3,7 @@ Orb center;
 int mode;
 Boolean background;
 Boolean gravity;
+Boolean chained;
 final int GRAVITY = 0;
 final int ORBIT = 1;
 final int SPRING = 2;
@@ -17,6 +18,7 @@ void setup() {
   mode = GRAVITY;
   background = true;
   gravity = true;
+  chained = false;
 }
 void mouseClicked() {
   //add a new Orb to the orbList, constructed as follows:
@@ -42,6 +44,13 @@ void draw() {
     o.move();
     o.display();
   }
+  if (chained){
+      for (int i = 0; i < orbList.size() - 1; i++){
+        orbList.get(i).attractSpring(orbList.get(i+1));
+        stroke(0, 128);
+        line(orbList.get(i).x, orbList.get(i).y, orbList.get(i+1).x, orbList.get(i+1).y);
+      }
+    }
   center.display();
   fill(255);
   noStroke();
@@ -55,12 +64,15 @@ void draw() {
     text("Bounce", 20, 60);
   } else{
     text("Spring", 20, 60);
-  }
+  } 
   if (background){
     text("background", 80, 20);
   }
   if (gravity){
     text("gravity", 80, 40);
+  }
+  if (chained){
+    text("chained", 80, 60);
   }
   
 }
@@ -74,5 +86,7 @@ void keyPressed() {
     background = !background;
   } else if (keyCode == 71) {
     gravity = !gravity;
+  } else if (keyCode == 67){
+    chained = !chained;
   }
 }
