@@ -23,6 +23,12 @@ public class OrbNode {
   void display() {
     fill(c);
     ellipse(x, y, radius*2, radius*2);
+    if (next != null){
+      line(x, y+.01, next.x, next.y - .01);
+    }
+    if (prev != null){
+      line(x, y+.01, prev.x, prev.y - .01);
+    }
     //If next or previous exist, draw lines to them! (aim for slightly off center)
     /*you write this part*/
   }
