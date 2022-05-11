@@ -16,40 +16,39 @@ void draw() {
   background(255);
   orbs.processAll();
   orbs.display();
+  text("Length: "+SPRING_LENGTH, 20, 20);
+  text("Dampen: "+SPRING_DAMPEN, 20, 40);
+  text("Constant: "+SPRING_CONSTANT, 20, 60);
+  text("Gravity: "+GRAVITY, 20, 80);
 }
 void keyPressed() {
   if (key == '1') {
-    SPRING_CONSTANT+=.001;
+    SPRING_CONSTANT*=1.1;
   }
   if (key == '2') {
-    if (SPRING_CONSTANT > .001) {
-      SPRING_CONSTANT-=.001;
-    }
+    SPRING_CONSTANT*=.9;
   }
   if (key == '3') {
-    if (SPRING_DAMPEN <= .999) {
-      SPRING_DAMPEN+=.001;
+    if (SPRING_DAMPEN <= 1.0/1.1) {
+      SPRING_DAMPEN*=1.1;
     }
   }
   if (key == '4') {
-    if (SPRING_DAMPEN >= .001) {
-      SPRING_DAMPEN-=.001;
-    }
+
+    SPRING_DAMPEN*=.9;
   }
   if (key == '5') {
-    SPRING_LENGTH+=1;
+    SPRING_LENGTH*=1.1;
   }
   if (key == '6') {
-    if (SPRING_LENGTH >= 1) {
-      SPRING_LENGTH-=1;
-    }
+
+    SPRING_LENGTH*=.9;
   }
   if (key == '7') {
-    GRAVITY+=.01;
+    GRAVITY*=1.1;
   }
   if (key == '8') {
-    if (GRAVITY >= .01) {
-      GRAVITY -= .01;
-    }
+
+    GRAVITY *=.9;
   }
 }
