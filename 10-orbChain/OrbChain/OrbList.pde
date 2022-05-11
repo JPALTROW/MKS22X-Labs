@@ -17,9 +17,8 @@ public class OrbList {
     //insert orb at the end of the list before the last node.
     orb.prev = last.prev;
     orb.next = last;
+    last.prev.next = orb;
     last.prev = orb;
-    print(orb.prev);
-    print(orb.next);
   }
 
   /**
@@ -44,7 +43,6 @@ public class OrbList {
     //advance current to next until it is null, display() each of the nodes
     while(current != null){
       current.display();
-      println(current);
       current = current.next;
     }
   }
