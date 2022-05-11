@@ -7,7 +7,7 @@ public class OrbNode {
   public OrbNode() {
   }
   public OrbNode(float x_, float y_) {
-    this(x_, y_, 0.0, 0.0, 50.0);
+    this(x_, y_, 0.0, 0.0, 30.0);
   }
   public OrbNode(float x_, float y_, float dx_, float dy_, float radius_ ) {
     x = x_;
