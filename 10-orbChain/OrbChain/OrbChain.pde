@@ -18,7 +18,7 @@ void mouseClicked() {
     orbs.add(mouseX, new OrbNode(mouseX, mouseY));
   }
   if (mode == 2) {
-    orbs.delete(getNodeAt(mouseX, mouseY));
+    orbs.delete(orbs.getNodeAt(mouseX, mouseY));
   }
 }
 void draw() {
@@ -31,6 +31,9 @@ void draw() {
   text("Gravity: "+GRAVITY, 20, 80);
 }
 void keyPressed() {
+  if (keyCode == 32){
+    mode = (mode+10)%3;
+  }
   if (key == '1') {
     SPRING_CONSTANT*=1.1;
   }
