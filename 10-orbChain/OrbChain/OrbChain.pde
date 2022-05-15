@@ -3,6 +3,7 @@ static float SPRING_LENGTH = 50;
 static float SPRING_DAMPEN = 0.990;
 static float SPRING_CONSTANT = 0.015;
 static float GRAVITY = .35;
+static int mode = 0;
 final static int MODE = SPRING;
 OrbList orbs;
 void setup() {
@@ -10,7 +11,15 @@ void setup() {
   orbs = new OrbList();
 }
 void mouseClicked() {
-  orbs.add(mouseX,new OrbNode(mouseX, mouseY));
+  if (mode == 0) {
+    orbs.add(new OrbNode(mouseX, mouseY));
+  }
+  if (mode == 1) {
+    orbs.add(mouseX, new OrbNode(mouseX, mouseY));
+  }
+  if (mode == 2) {
+    orbs.delete(getNodeAt(mouseX, mouseY));
+  }
 }
 void draw() {
   background(255);

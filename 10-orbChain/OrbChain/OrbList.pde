@@ -58,9 +58,20 @@ public class OrbList {
     toBeAdded.prev = current.prev;
     current.prev = toBeAdded;
   }
-  
-  void delete(OrbNode target){
+
+  void delete(OrbNode target) {
     target.next.prev = target.prev;
     target.prev.next = target.next;
+  }
+
+  OrbNode getNodeAt(int x, int y) {
+    OrbNode current = first.next;
+    while (current != null) {
+      if (dist(x, y, current.x, current.y) < current.radius) {
+        return current;
+      }
+      current = current.next;
+    }
+    return null;
   }
 }

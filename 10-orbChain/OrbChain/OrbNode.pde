@@ -62,6 +62,8 @@ public class OrbNode {
     //apply gravity
     dy+=0.35;
   }
+  
+ 
 }
 
 public class FixedOrbNode extends OrbNode {
