@@ -60,8 +60,10 @@ public class OrbList {
   }
 
   void delete(OrbNode target) {
-    target.next.prev = target.prev;
-    target.prev.next = target.next;
+    if (target != null) {
+      target.next.prev = target.prev;
+      target.prev.next = target.next;
+    }
   }
 
   OrbNode getNodeAt(int x, int y) {
