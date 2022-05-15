@@ -29,6 +29,15 @@ void draw() {
   text("Dampen: "+SPRING_DAMPEN, 20, 40);
   text("Constant: "+SPRING_CONSTANT, 20, 60);
   text("Gravity: "+GRAVITY, 20, 80);
+  if (mode == 0){
+    text("Mode: Add" , 20, 100);
+  }
+  if (mode == 1){
+    text("Mode: Insert" , 20, 100);
+  }
+  if (mode == 2){
+    text("Mode: Delete" , 20, 100);
+  }
 }
 void keyPressed() {
   if (keyCode == 32){
