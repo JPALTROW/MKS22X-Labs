@@ -14,7 +14,12 @@ void setup() {
     {.11, .11, .11}, 
     {.11, .11, .11}
     } );
-  k2.apply(car, output);
+  Kernel k3 = new Kernel( new float[][] {
+    {0, -1, 0}, 
+    {-1, 5, -1}, 
+    {0, -1, 0}
+    } );
+  k3.apply(car, output);
   image(car, 0, 0);
   image(output, car.width, 0);
 }
