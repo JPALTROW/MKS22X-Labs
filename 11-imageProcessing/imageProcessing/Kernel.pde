@@ -14,8 +14,21 @@ public class Kernel {
    *     0-255, then clamp it to that range (< 0 becomes 0, >255 becomes 255)
    */
   color calcNewColor(PImage img, int x, int y) {
-    color black = color(35,128, 48);
-    return black; 
+    color black = color(0);
+    if (x == 0|| x == width - 1|| y == 0||y == height-1) {
+      return black;
+    }
+    int countR = 0;
+    int countB = 0;
+    int countG = 0;
+    for (int i : dirs) {
+      for (int j : dirs) {
+        countR += red(img.get(x + i, y+j)) * kernel[i+1][j+1];
+        countB += blue(img.get(x + i, y+j)) * kernel[i+1][j+1];
+        countG += green(img.get(x + i, y+j)) * kernel[i+1][j+1];
+      }
+    }
+    return color(countR, countG, countB);
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
   }

@@ -1,3 +1,5 @@
+static final int[] dirs = {-1, 0, 1};
+
 void setup() {
   size(1450, 500);
   PImage car = loadImage("redcar.png");
@@ -12,7 +14,7 @@ void setup() {
     {.11, .11, .11}, 
     {.11, .11, .11}
     } );
-  k.apply(car, output);
+  k2.apply(car, output);
   image(car, 0, 0);
   image(output, car.width, 0);
 }
